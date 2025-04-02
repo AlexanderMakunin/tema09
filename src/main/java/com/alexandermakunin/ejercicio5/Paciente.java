@@ -7,17 +7,26 @@ public class Paciente {
         M,F
     }
 
-    private static int identificador = 0;
+    private static int identificador = 1;
     private final String nombre;
     private final LocalDateTime fechaNac;
     private Sexo sexo = Sexo.M;
-    private final float altura;
-    private final float peso;
+    private final double altura;
+    private final double peso;
 
-    public Paciente(String nombre, LocalDateTime fechaNac, Sexo sexo, float altura, float peso) {
+    public Paciente(String nombre, LocalDateTime fechaNac, Sexo sexo, double altura, double peso) {
+        identificador++;
         this.nombre = nombre;
         this.fechaNac = fechaNac;
         this.sexo = sexo;
+        this.altura = altura;
+        this.peso = peso;
+    }
+
+    public Paciente(String nombre, LocalDateTime fechaNac, double altura, double peso) {
+        identificador++;
+        this.nombre = nombre;
+        this.fechaNac = fechaNac;
         this.altura = altura;
         this.peso = peso;
     }
@@ -38,24 +47,23 @@ public class Paciente {
         return sexo;
     }
 
-    public float getAltura() {
+    public double getAltura() {
         return altura;
     }
 
-    public float getPeso() {
+    public double getPeso() {
         return peso;
     }
 
     private int edadPaciente() {
-        //return LocalDateTime.now() - getFechaNac();
-        return 0;
+        return LocalDateTime.now().compareTo(getFechaNac());
     }
 
     @Override
     public String toString() {
         return "Paciente{" +
                 "nombre='" + nombre + '\'' +
-                ", fechaNac=" + fechaNac +
+                ", fechaNac=" + edadPaciente() +
                 ", sexo=" + sexo +
                 ", altura=" + altura +
                 ", peso=" + peso +
