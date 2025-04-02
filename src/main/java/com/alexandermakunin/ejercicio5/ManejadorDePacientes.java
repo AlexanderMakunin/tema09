@@ -5,16 +5,16 @@ import java.time.LocalDateTime;
 public class ManejadorDePacientes {
 
     public static int[] majorMenor(Paciente[] pacientes) {
-        int menor = LocalDateTime.now().getYear() - pacientes[0].getFechaNac().getYear();
-        int mayor = LocalDateTime.now().getYear() - pacientes[0].getFechaNac().getYear();
+        int menor = pacientes[0].getEdadPaciente();
+        int mayor = pacientes[0].getEdadPaciente();;
         int posicionMin = 0;
         int posicionMayor = 0;
         for (int i = 0; i < pacientes.length; i++) {
-            if (pacientes[i].getFechaNac().getYear() > mayor) {
-                mayor = pacientes[i].getFechaNac().getYear();
+            if (pacientes[i].getEdadPaciente() > mayor) {
+                mayor = pacientes[i].getEdadPaciente();
                 posicionMayor = i;
-            } else if (pacientes[i].getFechaNac().getYear() < menor) {
-                menor = pacientes[i].getFechaNac().getYear();
+            } else if (pacientes[i].getEdadPaciente() < menor) {
+                menor = pacientes[i].getEdadPaciente();
                 posicionMin = i;
             }
         }

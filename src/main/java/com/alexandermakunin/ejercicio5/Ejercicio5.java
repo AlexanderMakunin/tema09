@@ -2,6 +2,7 @@ package com.alexandermakunin.ejercicio5;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 
 public class Ejercicio5 {
     public static void main(String[] args) {
@@ -17,9 +18,13 @@ public class Ejercicio5 {
         pacientes[2] = new Paciente("juanita3",tiempo3, Paciente.Sexo.F,50.8 ,1.62);
         pacientes[3] = new Paciente("juanito",tiempo4, Paciente.Sexo.M,72.5 ,1.78);
         pacientes[4] = new Paciente("juanito2",tiempo5,85.2 ,1.8);
-        System.out.println(ManejadorDePacientes.majorMenor(pacientes));
-        System.out.println(ManejadorDePacientes.pacientsPerSexe(pacientes));
-        System.out.println(ManejadorDePacientes.IMC(pacientes[0]));
-        System.out.println(ManejadorDePacientes.mensajePorIMC(pacientes[0]));
+        System.out.println(Arrays.toString(ManejadorDePacientes.majorMenor(pacientes)));
+        System.out.println(Arrays.toString(ManejadorDePacientes.pacientsPerSexe(pacientes)));
+        for (Paciente paciente : pacientes) {
+            System.out.println(ManejadorDePacientes.IMC(paciente));
+        }
+        for (Paciente paciente : pacientes) {
+            System.out.println(ManejadorDePacientes.mensajePorIMC(paciente));
+        }
     }
 }
