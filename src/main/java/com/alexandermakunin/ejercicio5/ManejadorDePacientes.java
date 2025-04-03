@@ -18,7 +18,7 @@ public class ManejadorDePacientes {
                 posicionMin = i;
             }
         }
-        return new int[]{menor, mayor};
+        return new int[]{posicionMin, posicionMayor};
     }
 
     public static int[] pacientsPerSexe(Paciente[] pacientes) {
@@ -42,15 +42,15 @@ public class ManejadorDePacientes {
         double IMC = IMC(paciente);
         String message = "";
         if (IMC < 18.5) {
-            message = "Peso insuficiente";
+            return message = "Peso insuficiente";
         } else if (IMC < 25) {
-            message = "Peso normal";
+            return message = "Peso normal";
         } else if (IMC < 27) {
-            message = "Sobrepeso grado I";
+            return message = "Sobrepeso grado I";
         } else if (IMC < 30) {
-            message = "Sobrepeso grado II";
+            return message = "Sobrepeso grado II";
         } else if (IMC > 30){
-            message = "Sobrepeso grado III";
+            return message = "Sobrepeso grado III";
         }
         return message;
     }
