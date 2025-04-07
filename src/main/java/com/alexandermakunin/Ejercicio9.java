@@ -23,7 +23,7 @@ public class Ejercicio9 {
                     "7. Mejores puntuaciones\n" +
                     "---------------------\n" +
                     "0. Salir\n");
-            seleccion = scanner.nextInt();
+            seleccion = Integer.parseInt(scanner.nextLine());
             switch (seleccion) {
                 case 1 -> anyadirPalabra();
                 case 2 -> cambiarPalabra();
@@ -37,33 +37,30 @@ public class Ejercicio9 {
     }
     private static void anyadirPalabra() {
         System.out.println("Indique la palabra");
-        String palabra = scanner.next();
+        String palabra = scanner.nextLine();
         System.out.println("Indique el significado");
-        String significado = scanner.next();
+        String significado = scanner.nextLine();
         palabras.put(palabra, significado);
         System.out.println("Palabra añadida");
     }
 
     private static void cambiarPalabra() {
         System.out.println("Indique la palabra");
-        String palabra = scanner.next();
-        palabras.get(palabra);
+        String palabra = scanner.nextLine();
         System.out.println("Indique el significado");
-        String significado = scanner.next();
+        String significado = scanner.nextLine();
         palabras.replace(palabra,significado);
         System.out.println("Palabra cambiada");
     }
     private static void eliminarPalabra() {
         System.out.println("Indique la palabra");
-        String palabra = scanner.next();
-        palabras.get(palabra);
+        String palabra = scanner.nextLine();
         palabras.remove(palabra);
         System.out.println("Palabra eliminada");
     }
     private static void consultarPalabra() {
         System.out.println("Indique la palabra");
         String palabra = scanner.next();
-        palabras.get(palabra);
         System.out.println(palabras.get(palabra));
     }
     private static void mostrarDiccionario() {
@@ -79,11 +76,11 @@ public class Ejercicio9 {
         do {
             for (String significado : palabras.keySet()) {
                 System.out.println(significado);
-                palabraAAcertar = scanner.next();
+                palabraAAcertar = scanner.nextLine();
                 if (!significado.equals(palabraAAcertar)) {
-                    System.out.println("la palabra era: " + palabras.containsValue(significado));
+                    System.out.println("la palabra era: " + palabras.get(significado));
                     System.out.println("Indique su usuario: ");
-                    usuarios.put(scanner.next(), puntuacion);
+                    usuarios.put(scanner.nextLine(), puntuacion);
                     fallido = true;
                 } else {
                     puntuacion++;
@@ -92,10 +89,11 @@ public class Ejercicio9 {
         } while (!fallido);
     }
     private static void mostrarPuntuacion() {
+        // muchas grasas chatgpt, si me lo explican pq ns como hacer esto taria wapo xd
         System.out.println("Top 5: ");
-
-        for (int i = 0; i < 5; i++) {
-            System.out.println(usuarios.values());
-        }
+        usuarios.entrySet().stream()
+                .sorted((a, b) -> b.getValue().compareTo(a.getValue()))
+                .limit(5)
+                .forEach(entry -> System.out.println(entry.getKey()));
     }
 }
